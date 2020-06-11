@@ -1,5 +1,4 @@
 import React, { useCallback, useState } from "react";
-import Comments from "./Comments";
 import Content from "./Content";
 import useHnData from "./hooks/useHnData";
 
@@ -19,7 +18,6 @@ export default ({ author, title }) => {
       {expanded ? (
         <>
           <Content />
-          <Comments />
         </>
       ) : null}
     </div>

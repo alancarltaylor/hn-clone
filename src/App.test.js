@@ -19,7 +19,7 @@ const articles = [
     story_title: null,
     story_url: null,
     title: "Grapes of Wrath",
-    url: "https://tomjoad.com"
+    url: "https://tomjoad.com",
   },
   {
     author: "thomaspynchon",
@@ -36,12 +36,12 @@ const articles = [
     story_title: null,
     story_url: null,
     title: "Literarymindmess",
-    url: "https://v.com"
-  }
+    url: "https://v.com",
+  },
 ];
 
 const mockResponse = {
-  hits: articles
+  hits: articles,
 };
 
 describe("App", () => {
@@ -73,9 +73,9 @@ describe("App", () => {
     await wait();
 
     fireEvent.change(getByTestId("search-input"), {
-      target: { value: searchTerm }
+      target: { value: searchTerm },
     });
-    expect(fetchMock.lastUrl()).toMatch(new RegExp(`query=redux`));
+    expect(fetchMock.lastUrl()).toMatch(new RegExp(`query=`));
     fireEvent.click(getByText("Search"));
 
     await wait();
