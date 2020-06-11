@@ -1,13 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 
-export default class Search extends React.Component {
-  render() {
-    const { searchTerm, onSubmit } = this.props;
-    return (
-      <form onSubmit={evt => onSubmit(evt)}>
-        <input data-testid="search-input" value={searchTerm}></input>
-        <button type="submit">Search</button>
-      </form>
-    );
-  }
-}
+const Search = (props) => {
+  const { onSubmit } = props;
+  const [searchTerm, setSearchTerm] = useState("");
+  return (
+    <form
+      onSubmit={(evt) => {
+        onSubmit(searchTerm);
+        evt.preventDefault();
+      }}
+    >
+      <input
+        data-testid="search-input"
+        onChange={(evt) => setSearchTerm(evt.target.value)}
+        value={searchTerm}
+      ></input>
+      <button type="submit">Search</button>
+    </form>
+  );
+};
+
+export default Search;

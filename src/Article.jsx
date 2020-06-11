@@ -2,9 +2,8 @@ import React, { useCallback, useState } from "react";
 import Content from "./Content";
 import useHnData from "./hooks/useHnData";
 
-export default ({ author, title }) => {
+export default ({ author, title, url }) => {
   const [expanded, setExpanded] = useState(false);
-  const data = useHnData();
 
   const toggleExpanded = useCallback(() => {
     setExpanded(!expanded);
@@ -17,7 +16,7 @@ export default ({ author, title }) => {
       <button onClick={toggleExpanded}>{expanded ? "Less" : "More"}</button>
       {expanded ? (
         <>
-          <Content />
+          <Content url={url} />
         </>
       ) : null}
     </div>

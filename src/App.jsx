@@ -7,27 +7,32 @@ import Article from "./Article";
 const baseUrl = "http://hn.algolia.com/api/v1/";
 
 function App() {
-  const [searchTerm, setSearchTerm] = useState("redux");
+  const [searchTerm, setSearchTerm] = useState("");
 
   const data = useHnData(`${baseUrl}search?query=${searchTerm}`);
+  const handleSearch = (newSearchTerm) => {
+    setSearchTerm(newSearchTerm);
+  };
 
   return (
     <div className="container">
       <header>
-        <h1>Showing {data ? 0 : null} articles for redux</h1>
+        <h1>Showing {data ? data.length : null} articles for redux</h1>
       </header>
       <section>
-        <Search
-          searchTerm={searchTerm}
-          onSubmit={newSearchTerm => {
-            setSearchTerm(newSearchTerm);
-          }}
-        />
+        <Search onSubmit={handleSearch} />
       </section>
       <section className="articles">
-        {data[0] ? (
-          <Article title={data[0].title} author={data[0].title} />
-        ) : null}
+        {data
+          ? data.map((datum) => (
+              <Article
+                key={Math.random()}
+                title={datum.title}
+                author={datum.author}
+                url={datum.url}
+              />
+            ))
+          : null}
       </section>
     </div>
   );

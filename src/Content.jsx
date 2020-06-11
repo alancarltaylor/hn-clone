@@ -1,7 +1,7 @@
 import React from "react";
 
-export default class Content extends React.Component {
-  render() {
-    return <a href={this.props.url}>{this.props.url}</a>;
-  }
-}
+const Content = (props) => {
+  return <a href={props.url}>{props.url}</a>;
+};
+
+export default Content;
